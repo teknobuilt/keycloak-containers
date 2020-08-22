@@ -19,7 +19,8 @@ if [ "$GIT_REPO" != "" ]; then
     export M2_HOME=/opt/jboss/maven
 
     # Clone repository
-    git clone --depth 1 https://github.com/$GIT_REPO.git -b $GIT_BRANCH /opt/jboss/keycloak-source
+    git clone --depth 1 $GIT_REPO -b $GIT_BRANCH /opt/jboss/keycloak-source
+    #git clone --depth 1 https://github.com/$GIT_REPO.git -b $GIT_BRANCH /opt/jboss/keycloak-source
 
     # Build
     cd /opt/jboss/keycloak-source
