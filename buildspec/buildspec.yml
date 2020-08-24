@@ -16,7 +16,6 @@
           - export PATH=$PWD/:$PATH
           - yum upgrade -y
           - yum -y install jq python3-pip python3-dev && pip3 install --upgrade awscli
-          - amazon-linux-extras install docker
           - yum install docker
           - service docker start
           - usermod -a -G docker ec2-user
