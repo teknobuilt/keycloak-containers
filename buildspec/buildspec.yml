@@ -16,10 +16,7 @@
           - export PATH=$PWD/:$PATH
           - yum upgrade -y
           - yum -y install jq python3-pip python3-dev && pip3 install --upgrade awscli
-          - yum install docker
-          - service docker start
-          - usermod -a -G docker ec2-user
-          - docker info
+
       pre_build:
           commands:
             - TAG="$REPOSITORY_BRANCH.$ENVIRONMENT_NAME.$(date +%Y-%m-%d.%H.%M.%S).$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
