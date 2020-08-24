@@ -26,6 +26,7 @@
       build:
         commands:
           #- docker build --tag $REPOSITORY_URI:latest .
+          - systemctl start docker
           - cd server
           - docker build -t $REPOSITORY_URI:$TAG --build-arg GIT_REPO=https://github.com/teknobuilt/keycloak.git --build-arg GIT_BRANCH=master .
 
