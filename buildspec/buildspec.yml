@@ -18,7 +18,7 @@
           - yum -y install jq python3-pip python3-dev && pip3 install --upgrade awscli
       pre_build:
           commands:
-            - TAG="$REPOSITORY_NAME.$REPOSITORY_BRANCH.$ENVIRONMENT_NAME.$(date +%Y-%m-%d.%H.%M.%S).$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
+            - TAG="$REPOSITORY_BRANCH.$ENVIRONMENT_NAME.$(date +%Y-%m-%d.%H.%M.%S).$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
             - ls -a
             - sed -i 's@CONTAINER_IMAGE@'"$REPOSITORY_URI:$TAG"'@' k8s/sso.yml
             - $(aws ecr get-login --no-include-email)
@@ -26,7 +26,7 @@
       build:
         commands:
           #- docker build --tag $REPOSITORY_URI:latest .
-          - docker build server/Dockerfile --tag $REPOSITORY_URI:$TAG --build-arg GIT_REPO=https://ayadav02:7935add0ebb64eae80a60a164f5d23668f8dc68a@github.com/teknobuilt/keycloak.git --build-arg GIT_BRANCH=master
+          - docker build --t $REPOSITORY_URI:$TAG --build-arg GIT_REPO=https://ayadav02:7935add0ebb64eae80a60a164f5d23668f8dc68a@github.com/teknobuilt/keycloak.git --build-arg GIT_BRANCH=master server/Dockerfile
 
       post_build:
         commands:
