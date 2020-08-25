@@ -31,6 +31,6 @@ spec:
     spec:
       containers:
         - name: sso-k8s
-          image: 176023829637.dkr.ecr.us-east-1.amazonaws.com/test_poc:master.dev.2020-08-24.17.29.58.29494eaa
+          image: CONTAINER_IMAGE
           ports:
             - containerPort: 8080
